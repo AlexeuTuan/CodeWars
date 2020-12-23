@@ -57,9 +57,11 @@ public class Greed {
     // The most ratted solution
     public static int greedyPro(int[] dice) {
         int n[] = new int[7];
+
         for (int d : dice) {
             n[d]++;
         }
+
         return n[1] / 3 * 1000 +
                 n[1] % 3 * 100 +
                 n[2] / 3 * 200 +
