@@ -1,4 +1,4 @@
-package com.company;
+package alekseytyan.codewars;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package com.company;
+package alekseytyan.codewars;
 
 
 /**
@@ -17,6 +17,7 @@ package com.company;
  * findNextSquare(114) --> returns -1 since 114 is not a perfect
  */
 public class NumberFun {
+
     // My solution
     public static long findNextSquare(long sq) {
         if(!checkPerfectSquare(sq)) {

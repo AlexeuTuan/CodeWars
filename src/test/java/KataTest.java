@@ -1,4 +1,4 @@
-import com.company.Greed;
+import alekseytyan.codewars.Greed;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
