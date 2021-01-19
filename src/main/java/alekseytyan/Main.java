@@ -1,15 +1,18 @@
 package alekseytyan;
 
-import alekseytyan.hackerrank.DiagonalDifference;
-import alekseytyan.hackerrank.PlusMinus;
-import alekseytyan.hackerrank.StairCase;
-import alekseytyan.hackerrank.TimeConversion;
+import alekseytyan.hackerrank.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(TimeConversion.timeConversion("12:00:01AM"));
+        List<Integer> list = new ArrayList<>();
+        list.add(73);
+        list.add(67);
+        list.add(38);
+        list.add(33);
+
+        System.out.println(GradingStudents.gradingStudents(list));
     }
 }
