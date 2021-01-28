@@ -1,4 +1,4 @@
-package alekseytyan.hackerrank;
+package alekseytyan.hackerrank.algorithms;
 
 /**
  * You are choreographing a circus show with various animals. For one act, you are given two

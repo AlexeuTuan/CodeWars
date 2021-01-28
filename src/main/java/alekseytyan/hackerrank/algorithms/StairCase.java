@@ -1,4 +1,4 @@
-package alekseytyan.hackerrank;
+package alekseytyan.hackerrank.algorithms;
 
 /**
  * Staircase detail
