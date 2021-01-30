@@ -1,5 +1,9 @@
 package alekseytyan.codewars;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * If you finish this kata, you can try Insane Coloured Triangles by Bubbler,
  * which is a much harder version of this one.
@@ -34,34 +38,48 @@ package alekseytyan.codewars;
  * If you are only given one colour as the input, return that colour.
  */
 public class ColouredTriangles {
+
+    public static Set<Character> set = new HashSet<>(Arrays.asList('R','G','B'));
+
+    // My solution
     public static char triangle(final String row) {
-        // TODO
-        StringBuilder sPermanent = new StringBuilder(row);
-        StringBuilder s = new StringBuilder(row);
-        while (sPermanent.length() > 1) {
-            for (int i = 0; i < sPermanent.length() - 1; i++) {
-                if(sPermanent.charAt(i) == 'R') {
-                    switch (sPermanent.charAt(i+1)) {
-                        case 'R': s.append('R'); break;
-                        case 'G': s.append('B'); break;
-                        case 'B': s.append('G'); break;
-                    }
-                } else if(sPermanent.charAt(i) == 'G') {
-                    switch (sPermanent.charAt(i+1)) {
-                        case 'R': s.append('B'); break;
-                        case 'G': s.append('G'); break;
-                        case 'B': s.append('R'); break;
-                    }
-                } else if(sPermanent.charAt(i) == 'B') {
-                    switch (sPermanent.charAt(i+1)) {
-                        case 'R': s.append('G'); break;
-                        case 'G': s.append('R'); break;
-                        case 'B': s.append('B'); break;
-                    }
+
+        StringBuilder mRow = new StringBuilder(row);
+        StringBuilder curRow = new StringBuilder();
+
+        while (mRow.length() > 1) {
+            for (int i = 0; i < mRow.length() - 1; i++) {
+                if(mRow.charAt(i) == mRow.charAt(i+1)) {
+                    curRow.append(mRow.charAt(i));
+                } else {
+                    Set<Character> curSet = new HashSet<>(set);
+                    curSet.remove(mRow.charAt(i));
+                    curSet.remove(mRow.charAt(i+1));
+                    curRow.append(curSet.toArray()[0]);
                 }
             }
-            sPermanent = new StringBuilder(s);
+            mRow.delete(0, mRow.length());
+            mRow.append(curRow);
+            curRow.delete(0, curRow.length());
         }
-        return sPermanent.charAt(0);
+        return mRow.charAt(0);
+    }
+
+    // Most ratted approach
+    static char trianglePro(final String row) {
+
+        if (row.length() == 1) return row.charAt(0);
+
+        StringBuilder nextRow = new StringBuilder();
+        for (int i = 0; i < row.length() - 1; i++) {
+            char c1 = row.charAt(i), c2 = row.charAt(i + 1);
+            switch (c1) {
+                case 'R': nextRow.append(c2 == 'R' ? 'R' : c2 == 'G' ? 'B' : 'G'); break;
+                case 'G': nextRow.append(c2 == 'R' ? 'B' : c2 == 'G' ? 'G' : 'R'); break;
+                case 'B': nextRow.append(c2 == 'R' ? 'G' : c2 == 'G' ? 'R' : 'B'); break;
+            }
+        }
+
+        return trianglePro(nextRow.toString()); // recurse
     }
 }
